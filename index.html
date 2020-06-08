@@ -8,12 +8,65 @@
 </head>
 
 <body>
-    <input type="text" id="prefix" />
-    <ul id="historyList">
-
-    </ul>
+    <input type="text" id="full-address" />
+    <input type="hidden" id="prefix" />
+    <input type="radio" name="service" class="service-radio" value="mailinator" id="mailinator-service">
+    <input type="radio" name="service" class="service-radio" value="maildrop" id="maildrop-service">
+    <input type="button" id="copy-button" value="copy">
+    <input type="button" id="inbox-button" value="inbox">
+    <ul id="historyList"></ul>
     <script>
-        document.addEventListener('DOMContentLoaded', generateNewRandomPrefix);
+        document.addEventListener('DOMContentLoaded', init);
+
+
+        function init() {
+            loadHistory();
+            loadService();
+            initEvents();
+
+
+
+            generateNewRandomPrefix()
+        }
+
+        function loadHistory() {
+            //todo
+        }
+
+        function loadService() {
+            const defaultServiceId = 'maildrop-service';
+            var serviceId = localStorage.getItem('service-id');
+
+            if (serviceId) {
+                if (!setService(serviceId))
+                    setService(defaultServiceId);
+            } else {
+                setService(defaultServiceId);
+            }
+        }
+
+        function initEvents() {
+            //let copy = document.getElementById('copy-button');
+            let serviceRadios = document.getElementsByClassName('service-radio');
+
+            for (let i = 0; i < serviceRadios.length; i++) {
+                const radio = serviceRadios[i];
+                radio.addEventListener('change', function () {
+                    localStorage.setItem('service-id', this.value);
+                });
+
+            }
+
+        }
+
+        function setService(serviceId) {
+            let serviceRadio = document.getElementById(serviceId);
+            if (serviceRadio) {
+                serviceRadio.setAttribute('checked', 'checked');
+                return true;
+            }
+            return false;
+        }
 
         function randomInt(min, max) {
             var multiplier = max - min;
@@ -48,10 +101,10 @@
         function generateNewRandomPrefix() {
             let prefix = generateAddressPrefix();
             updateAddressPrefix(prefix);
-            addPrefixToHistory(prefix);
+            addToHistory(prefix);
         }
 
-        function addPrefixToHistory(prefix) {
+        function addToHistory(prefix) {
             prefixHistory.push(prefix);
             displayHistory();
         }

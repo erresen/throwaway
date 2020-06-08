@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quick Throwaway Email Address</title>
+    <title>Throwaway Email Address</title>
 </head>
+
 <body>
     <input type="text" id="prefix" />
+    <ul id="historyList">
+
+    </ul>
     <script>
-        document.addEventListener('DOMContentLoaded', updateAddressPrefix);
+        document.addEventListener('DOMContentLoaded', generateNewRandomPrefix);
 
         function randomInt(min, max) {
             var multiplier = max - min;
-            return min + Math.floor(Math.random() * multiplier); 
+            return min + Math.floor(Math.random() * multiplier);
         }
 
-        function randomString(){
+        function randomString() {
             const vowels = 'aeiou';
             const consonants = 'bcdfghjklmnpqrstvwxyz';
             let word = '';
@@ -36,10 +41,34 @@
             return words.join('-');
         }
 
-        function updateAddressPrefix(){
-            let prefix = generateAddressPrefix();
+        function updateAddressPrefix(prefix) {
             document.getElementById('prefix').value = prefix;
         }
+
+        function generateNewRandomPrefix() {
+            let prefix = generateAddressPrefix();
+            updateAddressPrefix(prefix);
+            addPrefixToHistory(prefix);
+        }
+
+        function addPrefixToHistory(prefix) {
+            prefixHistory.push(prefix);
+            displayHistory();
+        }
+
+        function displayHistory() {
+            let list = document.getElementById("historyList");
+            list.innerHTML = '';
+            for (let i = prefixHistory.length - 1; i >= 0; i--) {
+                const historyItem = prefixHistory[i];
+                let li = document.createElement('li');
+                li.appendChild(document.createTextNode(historyItem));
+                list.appendChild(li);
+            }
+        }
+
+        var prefixHistory = [];
     </script>
 </body>
+
 </html>

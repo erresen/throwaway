@@ -1,19 +1,19 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <img alt="Vue logo" src="./assets/logo.png" />
+    <CurrentEmail email="test@test.com" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CurrentEmail from "./components/CurrentEmail.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
+    CurrentEmail
   }
-}
+};
 </script>
 
 <style>

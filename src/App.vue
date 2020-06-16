@@ -20,7 +20,7 @@ export default {
   },
   data() {
     return {
-      emailsHistory: [
+      emailHistory: [
         {
           id: 1,
           email: "test@mailinator.com",
@@ -41,12 +41,12 @@ export default {
   },
   methods: {
     deleteHistoryItem(id) {
-      this.emailsHistory = this.emailsHistory.filter(
+      this.emailHistory = this.emailHistory.filter(
         (history) => history.id !== id
       );
     },
     addHistoryItem(historyItem) {
-      this.emailsHistory = [...this.emailHistory, historyItem];
+      this.emailHistory = [...this.emailHistory, historyItem];
     },
   },
 };

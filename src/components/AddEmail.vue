@@ -3,12 +3,19 @@
     <form @submit="addToHistory">
       <input type="text" name="email" placeholder="Email" v-model="email" />
       <input type="submit" value="Submit" class="btn" />
+      <input
+        type="button"
+        value="Generate"
+        class="btn"
+        v-on:click="generateNew"
+      />
     </form>
   </div>
 </template>
 
 <script>
 import { v4 as uuidv4 } from "uuid";
+import generate from "../throwaway";
 export default {
   name: "AddEmail",
   data() {
@@ -26,6 +33,12 @@ export default {
         service: "maildrop",
       };
       this.$emit("add-history-item", newHistoryItem);
+    },
+    generateNew(e) {
+      e.preventDefault();
+
+      const prefix = generate();
+      this.email = prefix + "@mailinator.com";
     },
   },
 };

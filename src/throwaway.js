@@ -14,12 +14,38 @@ function randomString() {
   return word;
 }
 
-function generate() {
-  var words = [];
-  for (let i = 0; i < 3; i++) {
-    words.push(randomString());
-  }
-  return words.join("-");
-}
+let throwaway = {
+  generate() {
+    var words = [];
+    for (let i = 0; i < 3; i++) {
+      words.push(randomString());
+    }
+    return words.join("-");
+  },
 
-export default generate;
+  getInboxUrl(prefix, service) {
+    switch (service) {
+      case "mailinator":
+        return `https://www.mailinator.com/v3/index.jsp?zone=public&query=${prefix}`;
+      case "maildrop":
+        return `https://maildrop.cc/inbox/${prefix}`;
+      default:
+        break;
+    }
+  },
+
+  getServiceDomain(service) {
+    switch (service) {
+      case "mailinator":
+        return "mailinator.com";
+      case "maildrop":
+        return "maildrop.cc";
+      default:
+        break;
+    }
+  },
+
+  defaultService: "mailinator",
+};
+
+export default throwaway;

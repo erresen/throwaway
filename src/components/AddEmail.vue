@@ -1,8 +1,11 @@
 <template>
   <div>
-    <form @submit="addToHistory">
+    <form>
+      <input type="radio" value="mailinator" v-model="service" />
+      <input type="radio" value="maildrop" v-model="service" />
       <input type="text" name="email" placeholder="Email" v-model="email" />
-      <input type="submit" value="Submit" class="btn" />
+      <input type="button" value="Copy" class="btn" />
+      <input type="button" value="Inbox" class="btn" />
       <input
         type="button"
         value="Generate"
@@ -15,12 +18,14 @@
 
 <script>
 import { v4 as uuidv4 } from "uuid";
-import generate from "../throwaway";
+import throwaway from "../throwaway";
 export default {
   name: "AddEmail",
   data() {
     return {
       email: "",
+      service: throwaway.defaultService,
+      prefix: "",
     };
   },
   methods: {
@@ -34,12 +39,19 @@ export default {
       };
       this.$emit("add-history-item", newHistoryItem);
     },
-    generateNew(e) {
-      e.preventDefault();
-
-      const prefix = generate();
-      this.email = prefix + "@mailinator.com";
+    generateNew() {
+      this.prefix = throwaway.generate();
+      let domain = throwaway.getServiceDomain(this.service);
+      this.email = `${this.prefix}@${domain}`;
     },
+    goToInbox() {
+      const inboxUrl = throwaway.getInboxUrl(this.prefix, this.service);
+      window.open(inboxUrl, "_blank");
+    },
+  },
+  created() {
+    const prefix = throwaway.generate();
+    this.email = prefix + "@mailinator.com";
   },
 };
 </script>

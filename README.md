@@ -20,6 +20,12 @@ npm run serve
 npm run build
 ```
 
+### Deploy
+
+```
+./deploy.sh
+```
+
 ### Lints and fixes files
 
 ```

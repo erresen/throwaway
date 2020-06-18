@@ -19,15 +19,20 @@
       </div>
       <div class="email-container">
         <input type="text" name="email" placeholder="Email" v-model="email" />
-        <input type="button" value="Copy" class="btn" />
-        <input type="button" value="Inbox" class="btn" />
+        <a href="javascript:void(0);" type="button" class="btn">Copy</a>
+        <a
+          href="javascript:void(0);"
+          type="button"
+          class="btn"
+          v-on:click="goToInbox"
+          >Inbox</a
+        >
       </div>
     </div>
     <div class="generate-new-container">
-      <input
-        type="button"
-        value="Generate"
-        class="btn"
+      <img
+        src="../assets/refresh.svg"
+        alt="Generate new email address"
         v-on:click="generateNew"
       />
     </div>
@@ -68,8 +73,7 @@ export default {
     },
   },
   created() {
-    const prefix = throwaway.generate();
-    this.email = prefix + "@mailinator.com";
+    this.generateNew();
   },
 };
 </script>
@@ -87,10 +91,17 @@ export default {
   width: 100%;
   margin: 20px;
 }
-
+a.btn {
+  padding: 19px 20px;
+  text-decoration: none;
+}
 input[type="text"] {
   text-align: center;
   font-size: 1.5em;
   padding: 5px;
+}
+.generate-new-container img {
+  width: 80px;
+  cursor: pointer;
 }
 </style>

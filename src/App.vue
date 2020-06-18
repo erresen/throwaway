@@ -20,23 +20,7 @@ export default {
   },
   data() {
     return {
-      emailHistory: [
-        {
-          id: 1,
-          email: "test@mailinator.com",
-          service: "mailinator",
-        },
-        {
-          id: 2,
-          email: "test2@mailinator.com",
-          service: "mailinator",
-        },
-        {
-          id: 3,
-          email: "test3@maildrop.cc",
-          service: "maildrop",
-        },
-      ],
+      emailHistory: [],
     };
   },
   methods: {

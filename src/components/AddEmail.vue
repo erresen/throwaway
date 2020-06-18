@@ -46,7 +46,13 @@
       </div>
       <div class="email-container">
         <input type="text" name="email" placeholder="Email" v-model="email" />
-        <a href="javascript:void(0);" type="button" class="btn">Copy</a>
+        <a
+          href="javascript:void(0);"
+          type="button"
+          class="btn"
+          v-clipboard:copy="email"
+          >Copy</a
+        >
         <a
           :href="inboxUrl"
           type="button"

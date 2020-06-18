@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png" />
+    <h1>throwaway</h1>
     <AddEmail v-on:add-history-item="addHistoryItem" />
     <EmailHistory
       v-bind:emailHistory="emailHistory"
@@ -53,5 +53,11 @@ export default {
   color: #fff;
   padding: 7px 20px;
   cursor: pointer;
+}
+
+h1 {
+  letter-spacing: 1em;
+  margin-bottom: 2em;
+  color: #555;
 }
 </style>

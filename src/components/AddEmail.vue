@@ -8,6 +8,7 @@
           id="mailinator-radio"
           value="mailinator"
           v-model="service"
+          v-on:change="setEmailForPrefix"
         />
         <label for="maildrop-radio">Maildrop</label>
         <input
@@ -15,6 +16,7 @@
           id="maildrop-radio"
           value="maildrop"
           v-model="service"
+          v-on:change="setEmailForPrefix"
         />
       </div>
       <div class="email-container">
@@ -64,12 +66,15 @@ export default {
     },
     generateNew() {
       this.prefix = throwaway.generate();
-      let domain = throwaway.getServiceDomain(this.service);
-      this.email = `${this.prefix}@${domain}`;
+      this.setEmailForPrefix();
     },
     goToInbox() {
       const inboxUrl = throwaway.getInboxUrl(this.prefix, this.service);
       window.open(inboxUrl, "_blank");
+    },
+    setEmailForPrefix() {
+      let domain = throwaway.getServiceDomain(this.service);
+      this.email = `${this.prefix}@${domain}`;
     },
   },
   created() {

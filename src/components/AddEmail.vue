@@ -1,5 +1,26 @@
 <template>
   <div>
+    <div class="generate-new-container">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        version="1.1"
+        x="0px"
+        y="0px"
+        viewBox="0 0 24 30"
+        enable-background="new 0 0 24 30"
+        xml:space="preserve"
+        v-on:click="generateNew"
+        title="Generate new email address"
+      >
+        <path
+          d="M2,6v5a1,1,0,0,0,2,0V7H18.586L17.293,8.293a1,1,0,1,0,1.414,1.414l3-3a.99.99,0,0,0,.217-.326,1,1,0,0,0,0-.764.99.99,0,0,0-.217-.326l-3-3a1,1,0,0,0-1.414,1.414L18.586,5H3A1,1,0,0,0,2,6Z"
+        />
+        <path
+          d="M21,12a1,1,0,0,0-1,1v4H5.414l1.293-1.293a1,1,0,0,0-1.414-1.414l-3,3a.99.99,0,0,0-.217.326,1,1,0,0,0,0,.764.99.99,0,0,0,.217.326l3,3a1,1,0,1,0,1.414-1.414L5.414,19H21a1,1,0,0,0,1-1V13A1,1,0,0,0,21,12Z"
+        />
+      </svg>
+    </div>
     <div class="current-container">
       <div class="services-container">
         <div class="service-group">
@@ -35,27 +56,6 @@
           >Inbox</a
         >
       </div>
-    </div>
-    <div class="generate-new-container">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink"
-        version="1.1"
-        x="0px"
-        y="0px"
-        viewBox="0 0 24 30"
-        enable-background="new 0 0 24 30"
-        xml:space="preserve"
-        v-on:click="generateNew"
-        title="Generate new email address"
-      >
-        <path
-          d="M2,6v5a1,1,0,0,0,2,0V7H18.586L17.293,8.293a1,1,0,1,0,1.414,1.414l3-3a.99.99,0,0,0,.217-.326,1,1,0,0,0,0-.764.99.99,0,0,0-.217-.326l-3-3a1,1,0,0,0-1.414,1.414L18.586,5H3A1,1,0,0,0,2,6Z"
-        />
-        <path
-          d="M21,12a1,1,0,0,0-1,1v4H5.414l1.293-1.293a1,1,0,0,0-1.414-1.414l-3,3a.99.99,0,0,0-.217.326,1,1,0,0,0,0,.764.99.99,0,0,0,.217.326l3,3a1,1,0,1,0,1.414-1.414L5.414,19H21a1,1,0,0,0,1-1V13A1,1,0,0,0,21,12Z"
-        />
-      </svg>
     </div>
   </div>
 </template>
@@ -110,7 +110,7 @@ export default {
 .email-container {
   display: grid;
   grid-template-columns: auto 150px 150px;
-  max-width: 1000px;
+  max-width: 764px;
   width: 100%;
   margin: 20px;
 }
@@ -130,6 +130,7 @@ svg {
   width: 80px;
   cursor: pointer;
   fill: #555;
+  margin: 20px 0;
 }
 svg:hover {
   fill: #000;

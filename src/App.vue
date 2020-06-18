@@ -57,7 +57,6 @@ export default {
 
 h1 {
   letter-spacing: 1em;
-  margin-bottom: 2em;
   color: #555;
 }
 </style>

@@ -2,31 +2,36 @@
   <div>
     <div class="current-container">
       <div class="services-container">
-        <label for="mailinator-radio">Mailinator</label>
-        <input
-          type="radio"
-          id="mailinator-radio"
-          value="mailinator"
-          v-model="service"
-          v-on:change="setEmailForPrefix"
-        />
-        <label for="maildrop-radio">Maildrop</label>
-        <input
-          type="radio"
-          id="maildrop-radio"
-          value="maildrop"
-          v-model="service"
-          v-on:change="setEmailForPrefix"
-        />
+        <div class="service-group">
+          <label for="mailinator-radio">Mailinator</label>
+          <input
+            type="radio"
+            id="mailinator-radio"
+            value="mailinator"
+            v-model="service"
+            v-on:change="setEmailForPrefix"
+          />
+        </div>
+        <div class="service-group">
+          <label for="maildrop-radio">Maildrop</label>
+          <input
+            type="radio"
+            id="maildrop-radio"
+            value="maildrop"
+            v-model="service"
+            v-on:change="setEmailForPrefix"
+          />
+        </div>
       </div>
       <div class="email-container">
         <input type="text" name="email" placeholder="Email" v-model="email" />
         <a href="javascript:void(0);" type="button" class="btn">Copy</a>
         <a
-          href="javascript:void(0);"
+          :href="inboxUrl"
           type="button"
           class="btn"
-          v-on:click="goToInbox"
+          target="_blank"
+          rel="noopener noreferrer"
           >Inbox</a
         >
       </div>
@@ -51,6 +56,7 @@ export default {
       email: "",
       service: throwaway.defaultService,
       prefix: "",
+      inboxUrl: "",
     };
   },
   methods: {
@@ -68,13 +74,11 @@ export default {
       this.prefix = throwaway.generate();
       this.setEmailForPrefix();
     },
-    goToInbox() {
-      const inboxUrl = throwaway.getInboxUrl(this.prefix, this.service);
-      window.open(inboxUrl, "_blank");
-    },
     setEmailForPrefix() {
       let domain = throwaway.getServiceDomain(this.service);
       this.email = `${this.prefix}@${domain}`;
+
+      this.inboxUrl = throwaway.getInboxUrl(this.prefix, this.service);
     },
   },
   created() {
@@ -108,5 +112,9 @@ input[type="text"] {
 .generate-new-container img {
   width: 80px;
   cursor: pointer;
+}
+.service-group {
+  display: inline-block;
+  margin: 0 20px;
 }
 </style>

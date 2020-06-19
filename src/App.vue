@@ -70,4 +70,7 @@ a.btn {
 a.btn:hover {
   background-color: #000;
 }
+span.btn:hover {
+  background-color: #000;
+}
 </style>

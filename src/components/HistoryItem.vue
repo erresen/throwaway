@@ -41,7 +41,7 @@ export default {
 <style scoped>
 .history-item {
   display: grid;
-  grid-template-columns: auto 73px 73px 50px;
+  grid-template-columns: auto 75px 75px 50px;
   background: #f4f4f4;
   align-items: center;
   max-width: 764px;

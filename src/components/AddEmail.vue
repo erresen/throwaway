@@ -82,7 +82,7 @@ export default {
     addToHistory() {
       const newHistoryItem = {
         email: this.email,
-        service: "maildrop"
+        service: this.service
       };
       this.$emit("add-history-item", newHistoryItem);
     },

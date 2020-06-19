@@ -2,20 +2,39 @@
   <div class="history-item">
     <p>
       {{ historyItem.email }}
-      <button @click="$emit('copy-email', historyItem.id)">Copy</button>
-      <button @click="$emit('go-to-inbox', historyItem.id)">Inbox</button>
-      <button @click="$emit('del-history-item', historyItem.id)" class="del">
-        x
-      </button>
+      <a
+        href="javascript:void(0);"
+        type="button"
+        class="btn"
+        v-clipboard:copy="historyItem.email"
+        v-clipboard:success="onCopy"
+      >Copy</a>
+      <a
+        :href="inboxUrl"
+        type="button"
+        class="btn"
+        target="_blank"
+        rel="noopener noreferrer"
+        v-on:click="onInboxClick"
+      >Inbox</a>
+      <button @click="$emit('del-history-item', historyItem.email)" class="del">x</button>
     </p>
   </div>
 </template>
 
 <script>
+import throwaway from "../throwaway";
 export default {
   name: "HistoryItem",
   props: ["historyItem"],
-  methods: {},
+  created() {
+    let prefix = this.historyItem.email.split("@")[0];
+    this.inboxUrl = throwaway.getInboxUrl(prefix, this.historyItem.service);
+  },
+  methods: {
+    onCopy() {},
+    onInboxClick() {}
+  }
 };
 </script>
 

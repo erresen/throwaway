@@ -45,7 +45,7 @@
         </div>
       </div>
       <div class="email-container">
-        <input type="text" name="email" placeholder="Email" v-model="email" />
+        <span class="email">{{email}}</span>
         <a
           href="javascript:void(0);"
           type="button"
@@ -121,11 +121,12 @@ export default {
   max-width: 764px;
   width: 100%;
   margin: 20px;
+  align-items: center;
 }
 a.btn {
   padding: 19px 20px;
 }
-input[type="text"] {
+span.email {
   text-align: center;
   font-size: 1.5em;
   padding: 5px;

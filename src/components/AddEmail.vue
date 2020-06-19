@@ -127,6 +127,7 @@ a.btn {
   padding: 19px 20px;
 }
 span.email {
+  font-family: "Ubuntu Mono", monospace;
   text-align: center;
   font-size: 1.5em;
   padding: 5px;

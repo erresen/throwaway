@@ -1,30 +1,24 @@
 <template>
   <div class="history-item">
-    <div>{{ historyItem.email }}</div>
-    <div class="btn-wide">
-      <a
-        href="javascript:void(0);"
-        class="btn"
-        v-clipboard:copy="historyItem.email"
-        v-clipboard:success="onCopy"
-      >Copy</a>
-    </div>
-    <div class="btn-wide">
-      <a
-        :href="inboxUrl"
-        class="btn"
-        target="_blank"
-        rel="noopener noreferrer"
-        v-on:click="onInboxClick"
-      >Inbox</a>
-    </div>
-    <div class="btn-narrow">
-      <a
-        href="javascript:void(0);"
-        class="btn"
-        @click="$emit('del-history-item', historyItem.email)"
-      >X</a>
-    </div>
+    <span class="email">{{ historyItem.email }}</span>
+    <a
+      href="javascript:void(0);"
+      class="btn"
+      v-clipboard:copy="historyItem.email"
+      v-clipboard:success="onCopy"
+    >Copy</a>
+    <a
+      :href="inboxUrl"
+      class="btn"
+      target="_blank"
+      rel="noopener noreferrer"
+      v-on:click="onInboxClick"
+    >Inbox</a>
+    <a
+      href="javascript:void(0);"
+      class="btn"
+      @click="$emit('del-history-item', historyItem.email)"
+    >X</a>
   </div>
 </template>
 
@@ -53,10 +47,7 @@ export default {
   max-width: 764px;
   width: 100%;
 }
-.btn-wide {
-  width: 73px;
-}
-.btn-narrow {
-  width: 50px;
+span.email {
+  font-family: "Ubuntu Mono", monospace;
 }
 </style>

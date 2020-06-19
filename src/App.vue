@@ -41,7 +41,7 @@ export default {
 
 <style>
 #app {
-  font-family: Avenir, Poppins, Helvetica, Arial, sans-serif;
+  font-family: Ubuntu, Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -59,8 +59,9 @@ export default {
 }
 
 h1 {
-  letter-spacing: 1em;
-  color: #555;
+  font-size: 3em;
+  color: #222;
+  font-family: Staatliches, cursive;
 }
 
 a.btn {

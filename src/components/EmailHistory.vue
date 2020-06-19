@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div v-bind:key="item.id" v-for="item in emailHistory">
+    <div v-bind:key="item.email" v-for="item in emailHistory">
       <HistoryItem
         v-bind:historyItem="item"
-        v-on:del-history-item="$emit('del-history-item', item.id)"
+        v-on:del-history-item="$emit('del-history-item', item.email)"
       />
     </div>
   </div>
@@ -15,9 +15,9 @@ import HistoryItem from "./HistoryItem";
 export default {
   name: "EmailHistory",
   components: {
-    HistoryItem,
+    HistoryItem
   },
-  props: ["emailHistory"],
+  props: ["emailHistory"]
 };
 </script>
 

@@ -2,10 +2,7 @@
   <div id="app">
     <h1>throwaway</h1>
     <AddEmail v-on:add-history-item="addHistoryItem" />
-    <EmailHistory
-      v-bind:emailHistory="emailHistory"
-      v-on:del-history-item="deleteHistoryItem"
-    />
+    <EmailHistory v-bind:emailHistory="emailHistory" v-on:del-history-item="deleteHistoryItem" />
   </div>
 </template>
 
@@ -16,23 +13,29 @@ export default {
   name: "App",
   components: {
     EmailHistory,
-    AddEmail,
+    AddEmail
   },
   data() {
     return {
-      emailHistory: [],
+      emailHistory: []
     };
   },
   methods: {
-    deleteHistoryItem(id) {
+    deleteHistoryItem(email) {
       this.emailHistory = this.emailHistory.filter(
-        (history) => history.id !== id
+        history => history.email !== email
       );
     },
     addHistoryItem(historyItem) {
-      this.emailHistory = [...this.emailHistory, historyItem];
-    },
-  },
+      var currentEmails = this.emailHistory.map(h => {
+        return h.email;
+      });
+
+      if (currentEmails.includes(historyItem.email)) return;
+
+      this.emailHistory = [historyItem, ...this.emailHistory];
+    }
+  }
 };
 </script>
 

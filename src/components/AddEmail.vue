@@ -51,23 +51,22 @@
           type="button"
           class="btn"
           v-clipboard:copy="email"
-          >Copy</a
-        >
+          v-clipboard:success="onCopy"
+        >Copy</a>
         <a
           :href="inboxUrl"
           type="button"
           class="btn"
           target="_blank"
           rel="noopener noreferrer"
-          >Inbox</a
-        >
+          v-on:click="onInboxClick"
+        >Inbox</a>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import { v4 as uuidv4 } from "uuid";
 import throwaway from "../throwaway";
 export default {
   name: "AddEmail",
@@ -76,17 +75,14 @@ export default {
       email: "",
       service: throwaway.defaultService,
       prefix: "",
-      inboxUrl: "",
+      inboxUrl: ""
     };
   },
   methods: {
-    addToHistory(e) {
-      e.preventDefault();
-
+    addToHistory() {
       const newHistoryItem = {
-        id: uuidv4(),
         email: this.email,
-        service: "maildrop",
+        service: "maildrop"
       };
       this.$emit("add-history-item", newHistoryItem);
     },
@@ -100,10 +96,16 @@ export default {
 
       this.inboxUrl = throwaway.getInboxUrl(this.prefix, this.service);
     },
+    onCopy() {
+      this.addToHistory();
+    },
+    onInboxClick() {
+      this.addToHistory();
+    }
   },
   created() {
     this.generateNew();
-  },
+  }
 };
 </script>
 

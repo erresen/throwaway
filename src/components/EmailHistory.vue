@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-bind:key="item.email" v-for="item in emailHistory">
+    <div v-bind:key="item.email" v-for="item in emailHistory" class="email-history">
       <HistoryItem
         v-bind:historyItem="item"
         v-on:del-history-item="$emit('del-history-item', item.email)"
@@ -21,4 +21,10 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.email-history {
+  display: grid;
+  justify-items: center;
+  width: 100%;
+}
+</style>

@@ -62,4 +62,11 @@ h1 {
   letter-spacing: 1em;
   color: #555;
 }
+
+a.btn {
+  text-decoration: none;
+}
+a.btn:hover {
+  background-color: #000;
+}
 </style>

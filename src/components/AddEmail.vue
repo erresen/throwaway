@@ -124,10 +124,6 @@ export default {
 }
 a.btn {
   padding: 19px 20px;
-  text-decoration: none;
-}
-a.btn:hover {
-  background-color: #000;
 }
 input[type="text"] {
   text-align: center;

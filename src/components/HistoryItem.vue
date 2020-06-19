@@ -1,24 +1,30 @@
 <template>
   <div class="history-item">
-    <p>
-      {{ historyItem.email }}
+    <div>{{ historyItem.email }}</div>
+    <div class="btn-wide">
       <a
         href="javascript:void(0);"
-        type="button"
         class="btn"
         v-clipboard:copy="historyItem.email"
         v-clipboard:success="onCopy"
       >Copy</a>
+    </div>
+    <div class="btn-wide">
       <a
         :href="inboxUrl"
-        type="button"
         class="btn"
         target="_blank"
         rel="noopener noreferrer"
         v-on:click="onInboxClick"
       >Inbox</a>
-      <button @click="$emit('del-history-item', historyItem.email)" class="del">x</button>
-    </p>
+    </div>
+    <div class="btn-narrow">
+      <a
+        href="javascript:void(0);"
+        class="btn"
+        @click="$emit('del-history-item', historyItem.email)"
+      >X</a>
+    </div>
   </div>
 </template>
 
@@ -40,22 +46,17 @@ export default {
 
 <style scoped>
 .history-item {
+  display: grid;
+  grid-template-columns: auto 73px 73px 50px;
   background: #f4f4f4;
-  padding: 10px;
-  border-bottom: 1px #ccc dotted;
+  align-items: center;
+  max-width: 764px;
+  width: 100%;
 }
-
-.is-complete {
-  text-decoration: line-through;
+.btn-wide {
+  width: 73px;
 }
-
-.del {
-  background: #ff0000;
-  color: #fff;
-  border: none;
-  padding: 5px 9px;
-  border-radius: 50%;
-  cursor: pointer;
-  float: right;
+.btn-narrow {
+  width: 50px;
 }
 </style>

@@ -34,6 +34,15 @@ export default {
       if (currentEmails.includes(historyItem.email)) return;
 
       this.emailHistory = [historyItem, ...this.emailHistory];
+
+      let history = JSON.stringify(this.emailHistory);
+      localStorage.setItem("stored-history", history);
+    }
+  },
+  created() {
+    let history = localStorage.getItem("stored-history");
+    if (history) {
+      this.emailHistory = JSON.parse(history);
     }
   }
 };

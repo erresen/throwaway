@@ -13,7 +13,7 @@
         v-model="shouldStoreHistory"
         v-on:change="toggleStoreHistory"
       />
-      <label for="keep-history">Keep history for later (uses browser's local storage)</label>
+      <label for="keep-history">Keep history for later</label>
     </div>
   </div>
 </template>

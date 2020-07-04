@@ -2,7 +2,12 @@
   <div id="app">
     <h1>throwaway</h1>
     <AddEmail v-on:add-history-item="addHistoryItem" />
-    <EmailHistory v-bind:emailHistory="emailHistory" v-on:del-history-item="deleteHistoryItem" />
+    <EmailHistory
+      v-bind:emailHistory="emailHistory"
+      v-bind:storeHistory="shouldStoreHistory"
+      v-on:del-history-item="deleteHistoryItem"
+      v-on:store-history="setHistoryStorage"
+    />
   </div>
 </template>
 
@@ -17,7 +22,8 @@ export default {
   },
   data() {
     return {
-      emailHistory: []
+      emailHistory: [],
+      shouldStoreHistory: false
     };
   },
   methods: {
@@ -25,24 +31,53 @@ export default {
       this.emailHistory = this.emailHistory.filter(
         history => history.email !== email
       );
+
+      if (this.shouldStoreHistory) {
+        this.storeHistory();
+      }
     },
     addHistoryItem(historyItem) {
       var currentEmails = this.emailHistory.map(h => {
         return h.email;
       });
 
-      if (currentEmails.includes(historyItem.email)) return;
+      if (currentEmails.includes(historyItem.email)) {
+        return;
+      }
 
       this.emailHistory = [historyItem, ...this.emailHistory];
 
+      if (this.shouldStoreHistory) {
+        this.storeHistory();
+      }
+    },
+    storeHistory() {
       let history = JSON.stringify(this.emailHistory);
       localStorage.setItem("stored-history", history);
+    },
+    removeStoredHistory() {
+      localStorage.removeItem("stored-history");
+    },
+    setHistoryStorage(shouldStore) {
+      if (shouldStore) {
+        this.shouldStoreHistory = true;
+        this.storeHistory();
+      } else {
+        this.shouldStoreHistory = false;
+        this.removeStoredHistory();
+      }
+      localStorage.setItem("store-history", this.shouldStoreHistory);
     }
   },
   created() {
-    let history = localStorage.getItem("stored-history");
-    if (history) {
-      this.emailHistory = JSON.parse(history);
+    let shouldStore = localStorage.getItem("store-history");
+    console.log(`should store ${shouldStore}`);
+    if (shouldStore === "true") {
+      this.shouldStoreHistory = true;
+      let history = localStorage.getItem("stored-history");
+      if (history) {
+        this.emailHistory = JSON.parse(history);
+      }
     }
   }
 };

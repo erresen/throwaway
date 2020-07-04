@@ -6,6 +6,15 @@
         v-on:del-history-item="$emit('del-history-item', item.email)"
       />
     </div>
+    <div class="keep-history">
+      <input
+        id="keep-history"
+        type="checkbox"
+        v-model="shouldStoreHistory"
+        v-on:change="toggleStoreHistory"
+      />
+      <label for="keep-history">Keep history for later (uses browser's local storage)</label>
+    </div>
   </div>
 </template>
 
@@ -17,7 +26,20 @@ export default {
   components: {
     HistoryItem
   },
-  props: ["emailHistory"]
+  data() {
+    return {
+      shouldStoreHistory: false
+    };
+  },
+  props: ["emailHistory", "storeHistory"],
+  created() {
+    this.shouldStoreHistory = this.storeHistory;
+  },
+  methods: {
+    toggleStoreHistory() {
+      this.$emit("store-history", this.shouldStoreHistory);
+    }
+  }
 };
 </script>
 
@@ -26,5 +48,8 @@ export default {
   display: grid;
   justify-items: center;
   width: 100%;
+}
+div.keep-history {
+  margin-top: 2em;
 }
 </style>

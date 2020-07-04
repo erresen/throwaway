@@ -9,6 +9,7 @@
       v-on:store-history="setHistoryStorage"
     />
     <Footer />
+    <CookieConsent />
   </div>
 </template>
 
@@ -16,12 +17,14 @@
 import EmailHistory from "./components/EmailHistory";
 import AddEmail from "./components/AddEmail";
 import Footer from "./components/Footer";
+import CookieConsent from "./components/CookieConsent";
 export default {
   name: "App",
   components: {
     EmailHistory,
     AddEmail,
-    Footer
+    Footer,
+    CookieConsent
   },
   data() {
     return {
@@ -74,7 +77,6 @@ export default {
   },
   created() {
     let shouldStore = localStorage.getItem("store-history");
-    console.log(`should store ${shouldStore}`);
     if (shouldStore === "true") {
       this.shouldStoreHistory = true;
       let history = localStorage.getItem("stored-history");
@@ -116,6 +118,7 @@ h1 {
   color: #fff;
   padding: 7px 20px;
   cursor: pointer;
+  transition: background 0.3s;
 }
 
 h1 {

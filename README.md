@@ -9,7 +9,7 @@ Currently supported services:
 
 ## Why?
 
-I regularly use throwaway email services to sign up to services without giving away my personal data, but I don't really like spamming the keyboard to come up with random email addresses for mailinator. I also wanted to learn a bit of [Vue.js](https://vuejs.org/), and this seemed like an simple small project to get my feet wet.
+I regularly use throwaway email addresses to sign up to online services without giving away my personal information, but I don't really like spamming the keyboard to come up with random email addresses for mailinator. I also wanted to learn a bit of [Vue.js](https://vuejs.org/), and this seemed like an simple small project to get my feet wet.
 
 ## Development
 

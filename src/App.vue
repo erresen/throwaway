@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h1>throwaway</h1>
+    <h1>Throwaway</h1>
     <AddEmail v-on:add-history-item="addHistoryItem" />
     <EmailHistory
       v-bind:emailHistory="emailHistory"
@@ -24,18 +24,18 @@ export default {
     EmailHistory,
     AddEmail,
     Footer,
-    CookieConsent
+    CookieConsent,
   },
   data() {
     return {
       emailHistory: [],
-      shouldStoreHistory: false
+      shouldStoreHistory: false,
     };
   },
   methods: {
     deleteHistoryItem(email) {
       this.emailHistory = this.emailHistory.filter(
-        history => history.email !== email
+        (history) => history.email !== email
       );
 
       if (this.shouldStoreHistory) {
@@ -43,7 +43,7 @@ export default {
       }
     },
     addHistoryItem(historyItem) {
-      var currentEmails = this.emailHistory.map(h => {
+      var currentEmails = this.emailHistory.map((h) => {
         return h.email;
       });
 
@@ -73,7 +73,7 @@ export default {
         this.removeStoredHistory();
       }
       localStorage.setItem("store-history", this.shouldStoreHistory);
-    }
+    },
   },
   created() {
     let shouldStore = localStorage.getItem("store-history");
@@ -84,7 +84,7 @@ export default {
         this.emailHistory = JSON.parse(history);
       }
     }
-  }
+  },
 };
 </script>
 

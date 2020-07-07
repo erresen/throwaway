@@ -3,7 +3,9 @@
     <footer>
       <ul>
         <li>
-          <a href="https://github.com/erresen/throwaway" target="_blank">Throwaway Project</a>
+          <a href="https://github.com/erresen/throwaway" target="_blank"
+            >Throwaway Project</a
+          >
         </li>
         <li>
           <a href="https://github.com/erresen" target="_blank">Github</a>
@@ -12,7 +14,9 @@
           <a href="https://erresen.github.io" target="_blank">Blog</a>
         </li>
         <li>
-          <a href="https://erresen.github.io/privacy/" target="_blank">Privacy Policy</a>
+          <a href="https://erresen.github.io/privacy/" target="_blank"
+            >Privacy Policy</a
+          >
         </li>
       </ul>
     </footer>
@@ -21,7 +25,7 @@
 
 <script>
 export default {
-  name: "Footer"
+  name: "FooterMenu",
 };
 </script>
 

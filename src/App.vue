@@ -8,7 +8,7 @@
       v-on:del-history-item="deleteHistoryItem"
       v-on:store-history="setHistoryStorage"
     />
-    <Footer />
+    <FooterMenu />
     <CookieConsent />
   </div>
 </template>
@@ -16,14 +16,14 @@
 <script>
 import EmailHistory from "./components/EmailHistory";
 import AddEmail from "./components/AddEmail";
-import Footer from "./components/Footer";
+import FooterMenu from "./components/FooterMenu";
 import CookieConsent from "./components/CookieConsent";
 export default {
   name: "App",
   components: {
     EmailHistory,
     AddEmail,
-    Footer,
+    FooterMenu,
     CookieConsent,
   },
   data() {

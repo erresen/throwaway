@@ -24,7 +24,7 @@
         </div>
       </div>
       <div class="email-container">
-        <span class="btn" v-on:click="generateNew">
+        <span class="btn left-refresh" v-on:click="generateNew">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -45,6 +45,26 @@
           </svg>
         </span>
         <span class="email">{{email}}</span>
+        <span class="btn right-refresh" v-on:click="generateNew">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink"
+            version="1.1"
+            x="0px"
+            y="0px"
+            viewBox="0 0 24 24"
+            enable-background="new 0 0 24 24"
+            xml:space="preserve"
+            title="Generate new email address"
+          >
+            <path
+              d="M2,6v5a1,1,0,0,0,2,0V7H18.586L17.293,8.293a1,1,0,1,0,1.414,1.414l3-3a.99.99,0,0,0,.217-.326,1,1,0,0,0,0-.764.99.99,0,0,0-.217-.326l-3-3a1,1,0,0,0-1.414,1.414L18.586,5H3A1,1,0,0,0,2,6Z"
+            />
+            <path
+              d="M21,12a1,1,0,0,0-1,1v4H5.414l1.293-1.293a1,1,0,0,0-1.414-1.414l-3,3a.99.99,0,0,0-.217.326,1,1,0,0,0,0,.764.99.99,0,0,0,.217.326l3,3a1,1,0,1,0,1.414-1.414L5.414,19H21a1,1,0,0,0,1-1V13A1,1,0,0,0,21,12Z"
+            />
+          </svg>
+        </span>
         <a
           href="javascript:void(0);"
           type="button"
@@ -116,12 +136,31 @@ export default {
 }
 .email-container {
   display: grid;
-  grid-template-columns: 100px auto 100px 100px;
   max-width: 764px;
   width: 100%;
   margin: 20px;
   align-items: center;
 }
+
+@media (min-width: 768px) {
+  .email-container {
+    grid-template-columns: 1fr minmax(464px, 3fr) 1fr 1fr;
+  }
+
+  .email-container span.right-refresh {
+    display: none;
+  }
+}
+@media (max-width: 767px) {
+  .email-container span.left-refresh {
+    display: none;
+  }
+
+  .email-container span.email {
+    grid-column: span 3;
+  }
+}
+
 a.btn {
   padding: 19px 20px;
 }

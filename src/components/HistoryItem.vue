@@ -1,6 +1,6 @@
 <template>
   <div class="history-item">
-    <span class="email">{{ historyItem.email }}</span>
+    <span class="email" v-html="emailWithBreak"></span>
     <a
       href="javascript:void(0);"
       class="btn"
@@ -101,10 +101,28 @@ export default {
   created() {
     let prefix = this.historyItem.email.split("@")[0];
     this.inboxUrl = throwaway.getInboxUrl(prefix, this.historyItem.service);
+    this.emailWithBreak = this.insertBreakBeforeAt(this.historyItem.email);
   },
   methods: {
     onCopy() {},
-    onInboxClick() {}
+    onInboxClick() {},
+    insertBreakBeforeAt(email) {
+      const atIndex = email.indexOf("@");
+      if (atIndex >= 0) {
+        email = this.spliceSlice(email, atIndex, 0, "<wbr>");
+      }
+      return email;
+    },
+    spliceSlice(str, index, count, add) {
+      if (index < 0) {
+        index = str.length + index;
+        if (index < 0) {
+          index = 0;
+        }
+      }
+
+      return str.slice(0, index) + (add || "") + str.slice(index + count);
+    }
   }
 };
 </script>

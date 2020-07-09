@@ -11,6 +11,6 @@ Currently supported services:
 
 I regularly use throwaway email addresses to sign up to online services without giving away my personal information, but I don't really like spamming the keyboard to come up with random email addresses for mailinator. I also wanted to learn a bit of [Vue.js](https://vuejs.org/), and this seemed like an simple small project to get my feet wet.
 
-## Development
+## Legal
 
-Want to build the project yourself? [Here's the dev read-me](dev-readme.md).
+Icons used in this tool were licensed from [Font Awesome](https://fontawesome.com) under the Creative Commons Attribution 4.0 International license. [Here's a link to their license](https://fontawesome.com/license).

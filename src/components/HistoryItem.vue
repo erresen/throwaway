@@ -6,6 +6,7 @@
       class="btn"
       v-clipboard:copy="historyItem.email"
       v-clipboard:success="onCopy"
+      title="Copy to clipboard"
     >
       <svg
         aria-hidden="true"
@@ -26,6 +27,7 @@
       target="_blank"
       rel="noopener noreferrer"
       v-on:click="onInboxClick"
+      title="Go to inbox"
     >
       <svg
         aria-hidden="true"
@@ -40,7 +42,12 @@
         />
       </svg>
     </a>
-    <a href="javascript:void(0);" class="btn" @click="$emit('del-history-item', historyItem.email)">
+    <a
+      href="javascript:void(0);"
+      class="btn"
+      @click="$emit('del-history-item', historyItem.email)"
+      title="Remove from history"
+    >
       <svg
         aria-hidden="true"
         focusable="false"

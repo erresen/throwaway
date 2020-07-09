@@ -231,7 +231,7 @@ span.btn {
 span.email {
   font-family: "Ubuntu Mono", monospace;
   text-align: center;
-  font-size: min(max(1rem, 5vw), 1.8em);
+  font-size: min(max(1rem, 5vw), 1.6em);
   padding: 5px;
 }
 svg {

@@ -22,7 +22,7 @@ export default {
     return {
       dismissed: true,
       cookieName: "purecookieDismiss",
-      expireDays: 365
+      expireDays: 365,
     };
   },
   methods: {
@@ -49,7 +49,7 @@ export default {
         this.cookieName + "=" + (1 || "") + expires + "; path=/";
 
       this.dismissed = true;
-    }
+    },
   },
   created() {
     let cookie = this.getCookie();
@@ -58,14 +58,14 @@ export default {
     } else {
       this.dismissed = false;
     }
-  }
+  },
 };
 </script>
 
 <style scoped>
 .cookieConsentContainer {
   z-index: 999;
-  width: 450px;
+  max-width: 450px;
   min-height: 20px;
   box-sizing: border-box;
   padding: 20px 20px 20px 20px;

@@ -10,6 +10,7 @@
             value="mailinator"
             v-model="service"
             v-on:change="setEmailForPrefix"
+            checked="false"
           />
         </div>
         <div class="service-group">
@@ -20,6 +21,7 @@
             value="maildrop"
             v-model="service"
             v-on:change="setEmailForPrefix"
+            checked="false"
           />
         </div>
       </div>

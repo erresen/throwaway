@@ -114,16 +114,17 @@ export default {
   data() {
     return {
       email: "",
-      service: throwaway.defaultService,
+      service: "",
+      shouldStoreService: true,
       prefix: "",
-      inboxUrl: ""
+      inboxUrl: "",
     };
   },
   methods: {
     addToHistory() {
       const newHistoryItem = {
         email: this.email,
-        service: this.service
+        service: this.service,
       };
       this.$emit("add-history-item", newHistoryItem);
     },
@@ -136,17 +137,27 @@ export default {
       this.email = `${this.prefix}@${domain}`;
 
       this.inboxUrl = throwaway.getInboxUrl(this.prefix, this.service);
+      if (this.shouldStoreService) {
+        localStorage.setItem("stored-service", this.service);
+      }
     },
     onCopy() {
       this.addToHistory();
     },
     onInboxClick() {
       this.addToHistory();
-    }
+    },
   },
   created() {
+    let service = localStorage.getItem("stored-service");
+    if (service) {
+      this.service = service;
+    } else {
+      this.service = throwaway.defaultService;
+    }
+
     this.generateNew();
-  }
+  },
 };
 </script>
 

@@ -3,7 +3,7 @@
 # abort on errors
 set -e
 
-npm run build
+NODE_OPTIONS=--openssl-legacy-provider npm run build
 
 cd dist
 

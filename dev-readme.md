@@ -7,13 +7,13 @@ npm install
 ### Compiles and hot-reloads for development
 
 ```
-npm run serve
+NODE_OPTIONS=--openssl-legacy-provider npm run serve
 ```
 
 ### Compiles and minifies for production
 
 ```
-npm run build
+NODE_OPTIONS=--openssl-legacy-provider npm run build
 ```
 
 ### Deploy
